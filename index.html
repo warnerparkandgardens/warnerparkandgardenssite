@@ -4,225 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Warner Park &amp; Gardens</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-/* Warner Park & Gardens — Color Tokens */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  /* ─── Core palette ─── */
-  --color-primary:     #2A4547;   /* Deep teal-green — nav, footer, headings, borders */
-  --color-accent:      #5B8C5A;   /* Sage green — hover states, tags, secondary buttons */
-  --color-ginkgo:      #C9A227;   /* Gold — sparingly: Donate CTAs, pull quotes, leaf motifs */
-  --color-warm:        #E8DCC8;   /* Linen — section-break backgrounds, archival feel */
-  --color-bg:          #FAFAF5;   /* Near-white — default page background */
-  --color-text:        #2D2D2D;   /* Near-black — body copy */
-  --color-text-muted:  #6B6B6B;   /* Captions, metadata, secondary labels */
-
-  /* ─── Surface aliases ─── */
-  --surface-page:      var(--color-bg);
-  --surface-card:      #FFFFFF;
-  --surface-warm:      var(--color-warm);
-  --surface-nav:       var(--color-primary);
-  --surface-footer:    var(--color-primary);
-  --surface-donate:    var(--color-ginkgo);
-  --surface-map:       #DFE8DC;
-
-  /* ─── Text aliases ─── */
-  --text-body:         var(--color-text);
-  --text-muted:        var(--color-text-muted);
-  --text-heading:      var(--color-primary);
-  --text-on-dark:      var(--color-bg);
-  --text-on-dark-muted: var(--color-warm);
-  --text-on-gold:      var(--color-primary);
-  --text-link:         var(--color-accent);
-  --text-footer-muted: #6B8E90;
-
-  /* ─── Border aliases ─── */
-  --border-default:    var(--color-warm);
-  --border-input:      var(--color-warm);
-  --border-subtle:     rgba(232, 220, 200, 0.15);
-
-  /* ─── Tag palette ─── */
-  --tag-sage-bg:       var(--color-accent);
-  --tag-sage-text:     #FFFFFF;
-  --tag-linen-bg:      var(--color-warm);
-  --tag-linen-text:    var(--color-primary);
-  --tag-outline-border: var(--color-accent);
-  --tag-outline-text:  var(--color-primary);
-}
-  </style>
-  <style>
-/* Warner Park & Gardens — Typography Tokens */
-
-:root {
-  /* ─── Font families ─── */
-  --font-display:  'DM Serif Display', serif;     /* Headlines, hero text */
-  --font-body:     'DM Sans', sans-serif;          /* Body copy, UI text */
-  --font-mono:     'DM Mono', monospace;            /* Eyebrows, labels, code */
-
-  /* ─── Type scale ─── */
-  --text-5xl:   3.75rem;    /* 60px — Hero headlines */
-  --text-4xl:   2.75rem;    /* 44px — Section heroes */
-  --text-3xl:   2rem;       /* 32px — Section titles */
-  --text-2xl:   1.5rem;     /* 24px — Subheadings (DM Sans 500) */
-  --text-xl:    1.25rem;    /* 20px — Lead paragraphs */
-  --text-lg:    1.125rem;   /* 18px — Large body */
-  --text-base:  1rem;       /* 16px — Body copy */
-  --text-sm:    0.875rem;   /* 14px — Captions, metadata */
-  --text-xs:    0.8125rem;  /* 13px — Labels, eyebrows */
-  --text-2xs:   0.75rem;    /* 12px — Fine print */
-
-  /* ─── Line heights ─── */
-  --leading-tight:   1.05;
-  --leading-snug:    1.15;
-  --leading-normal:  1.5;
-  --leading-relaxed: 1.6;
-  --leading-loose:   1.7;
-
-  /* ─── Letter spacing ─── */
-  --tracking-eyebrow: 0.16em;
-  --tracking-eyebrow-wide: 0.18em;
-  --tracking-normal: 0;
-  --tracking-tight: -0.01em;
-
-  /* ─── Font weights ─── */
-  --weight-regular: 400;
-  --weight-medium:  500;
-  --weight-semi:    600;
-  --weight-bold:    700;
-}
-  </style>
-  <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-primary:    #2A4547;
+      --color-accent:     #5B8C5A;
+      --color-ginkgo:     #C9A227;
+      --color-warm:       #E8DCC8;
+      --color-bg:         #FAFAF5;
+      --color-text:       #2D2D2D;
+      --color-text-muted: #6B6B6B;
+      --font-display: 'DM Serif Display', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
 
     body {
-      background: var(--color-bg);
       font-family: var(--font-body);
       color: var(--color-text);
-      min-height: 100vh;
+      background: var(--color-bg);
     }
-    /* ── Wireframe primitives ── */
-    
-    
-    
 
-    /* Hatch pattern for image placeholders */
+    /* ── Shared image placeholder ── */
     .hatch {
+      background-color: #CDD5C8;
       background-image: repeating-linear-gradient(
         -45deg,
         rgba(42,69,71,0.07) 0px, rgba(42,69,71,0.07) 1px,
         transparent 1px, transparent 8px
       );
-      background-color: #CDD5C8;
     }
 
-    /* Placeholder text helpers */
-    .ph-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: var(--tracking-eyebrow);
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 14px;
-    }
-    .ph-eyebrow-light {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: var(--tracking-eyebrow);
-      text-transform: uppercase;
-      color: var(--color-warm);
-      margin-bottom: 14px;
-    }
-    .ph-h1 {
-      font-family: var(--font-display);
-      color: var(--color-bg);
-      line-height: var(--leading-tight);
-      text-wrap: pretty;
-      margin-bottom: 16px;
-    }
-    .ph-h2 {
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      color: var(--color-primary);
-      line-height: var(--leading-snug);
-      margin-bottom: 18px;
-      text-wrap: pretty;
-    }
-    .ph-h2-gold { color: var(--color-primary); }
-    .ph-body {
-      font-size: var(--text-base);
-      line-height: var(--leading-relaxed);
-      color: var(--color-text);
-      margin-bottom: 10px;
-    }
-    .wf-story .ph-body { margin-bottom: 0; }
-    .ph-body-muted {
-      font-size: var(--text-base);
-      line-height: var(--leading-relaxed);
-      color: rgba(250,250,245,0.75);
-      margin-bottom: 10px;
-    }
-    .ph-caption {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: rgba(250,250,245,0.4);
-      letter-spacing: 0.08em;
-      margin-top: 18px;
-    }
-    .ph-link {
-      font-size: var(--text-base);
-      color: var(--color-accent);
-      text-decoration: underline;
-      display: inline-block;
-      margin-top: 8px;
-    }
-    .img-tag {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-primary);
-      opacity: 0.5;
-      text-align: center;
-      padding: 10px;
-    }
-
-    /* Buttons */
-    .btn-gold {
-      background: var(--color-ginkgo);
-      color: var(--color-primary);
-      font-family: var(--font-body);
-      font-weight: 600;
-      border-radius: 28px;
-      padding: 12px 28px;
-      font-size: 15px;
-      display: inline-block;
-    }
-    .btn-ghost {
-      border: 1.5px solid rgba(250,250,245,0.45);
-      color: var(--color-bg);
-      font-family: var(--font-body);
-      font-weight: 500;
-      border-radius: 28px;
-      padding: 12px 28px;
-      font-size: 15px;
-      display: inline-block;
-    }
-    .btn-primary {
-      background: var(--color-primary);
-      color: var(--color-bg);
-      font-family: var(--font-body);
-      font-weight: 600;
-      border-radius: 28px;
-      padding: 14px 36px;
-      font-size: 16px;
-      display: inline-block;
-    }
-
-    /* ── NAV ── */
-    .wf-nav {
+    /* ── 01 NAV ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: var(--color-primary);
       height: 66px;
       display: flex;
@@ -231,29 +50,49 @@
       padding: 0 32px;
       gap: 16px;
     }
-    .wf-nav .logo-area { display: flex; align-items: center; gap: 10px; }
-    .wf-nav .leaf {
-      width: 22px; height: 22px;
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-leaf {
+      width: 22px;
+      height: 22px;
       border-radius: 50% 50% 50% 0;
       transform: rotate(-45deg);
       background: var(--color-ginkgo);
       flex-shrink: 0;
     }
-    .wf-nav .wordmark {
+
+    .nav-wordmark {
       font-family: var(--font-display);
       font-style: italic;
       font-size: 18px;
       color: var(--color-bg);
       white-space: nowrap;
     }
-    .wf-nav .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
-    .wf-nav .nav-link {
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-link {
       font-family: var(--font-body);
       font-size: 14px;
       color: rgba(250,250,245,0.75);
+      text-decoration: none;
       white-space: nowrap;
     }
-    .wf-nav .nav-donate {
+
+    .nav-link:hover { color: var(--color-bg); }
+
+    .nav-donate {
       background: var(--color-ginkgo);
       color: var(--color-primary);
       font-family: var(--font-body);
@@ -261,49 +100,145 @@
       font-weight: 600;
       padding: 8px 20px;
       border-radius: 28px;
+      text-decoration: none;
       white-space: nowrap;
     }
-    .wf-nav .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
-    .wf-nav .hamburger span { display: block; width: 18px; height: 1.5px; background: var(--color-warm); }
-    .wf-mobile-nav { padding: 0 20px; }
-    .wf-mobile-nav .nav-links { display: none; }
-    .wf-mobile-nav .nav-donate { display: none; }
-    .wf-mobile-nav .hamburger { display: flex; }
 
-    /* ── HERO ── */
-    .wf-hero {
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--color-warm);
+    }
+
+    /* Mobile nav drawer */
+    .nav-mobile-menu {
+      display: none;
+      position: absolute;
+      top: 66px;
+      left: 0;
+      right: 0;
+      background: var(--color-primary);
+      padding: 16px 22px 20px;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(232,220,200,0.15);
+    }
+
+    .nav-mobile-menu.open { display: flex; }
+
+    .nav-mobile-menu a {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(250,250,245,0.8);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(232,220,200,0.1);
+    }
+
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── 02 HERO ── */
+    .hero {
       position: relative;
       overflow: hidden;
+      height: 540px;
     }
-    .wf-hero .photo-placeholder {
-      position: absolute; inset: 0;
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
     }
-    .wf-hero .hero-scrim {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 20%, rgba(30,45,38,0.82));
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 20%, rgba(30,45,38,0.88));
     }
-    .wf-hero .hero-content {
-      position: relative; z-index: 2;
-      padding: 0 48px 52px;
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      padding: 0 48px 52px;
     }
-    .wf-hero .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-    .wf-hero { height: 540px; }
-    .wf-hero .hero-content { height: 540px; }
-    .wf-hero .ph-h1 { font-size: var(--text-5xl); }
-    .wf-hero .ph-body-muted { font-size: var(--text-xl); max-width: 480px; }
-    .wf-mobile-hero { height: 460px; }
-    .wf-mobile-hero .hero-content { height: 460px; padding: 0 24px 40px; }
-    .wf-mobile-hero .ph-h1 { font-size: var(--text-3xl); }
-    .wf-mobile-hero .btn-gold,
-    .wf-mobile-hero .btn-ghost { padding: 11px 22px; font-size: 14px; }
 
-    /* ── OUR STORY ── */
-    .wf-story { background: var(--color-bg); padding: 72px 48px; }
-    .wf-mobile-story { padding: 52px 24px; }
-    .wf-story .story-grid {
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: 3.75rem;
+      color: #fff;
+      line-height: 1.1;
+      text-wrap: pretty;
+      margin-bottom: 12px;
+    }
+
+    .hero-subhead {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .btn-gold {
+      background: var(--color-ginkgo);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(250,250,245,0.45);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero-caption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+      margin-top: 18px;
+    }
+
+    /* ── 03 OUR STORY ── */
+    .story {
+      background: var(--color-bg);
+      padding: 72px 48px;
+    }
+
+    .story-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
@@ -311,10 +246,24 @@
       max-width: 960px;
       margin: 0 auto;
     }
-    .wf-mobile-story .story-grid { grid-template-columns: 1fr; gap: 28px; }
-    .wf-story .ph-h2 { font-size: var(--text-3xl); }
-    .wf-mobile-story .ph-h2 { font-size: var(--text-2xl); }
-    .wf-story .photo-box {
+
+    .story-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .story-body p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+
+    .story-body p + p { margin-top: 1em; }
+
+    .story-photo {
       border-radius: 12px;
       aspect-ratio: 4/3;
       display: flex;
@@ -322,62 +271,88 @@
       justify-content: center;
       overflow: hidden;
     }
-    .wf-mobile-story .photo-box { order: -1; }
 
-    /* ── DONATE ── */
-    .wf-donate { background: var(--color-ginkgo); padding: 72px 48px; }
-    .wf-mobile-donate { padding: 52px 24px; }
-    .wf-donate .donate-inner {
-      max-width: 580px;
-      margin: 0 auto;
+    .ph-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      opacity: 0.5;
+    }
+
+    /* ── 04 DONATE ── */
+    .donate {
+      background: var(--color-ginkgo);
+      padding: 72px 48px;
       text-align: center;
     }
-    .wf-donate .ph-eyebrow-dark {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: var(--tracking-eyebrow);
-      text-transform: uppercase;
+
+    .donate-inner {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .donate-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
       color: var(--color-primary);
-      opacity: 0.65;
+      line-height: 1.2;
       margin-bottom: 14px;
     }
-    .wf-donate .ph-h2 { color: var(--color-primary); margin-bottom: 14px; }
-    .wf-donate .ph-body-donate {
-      font-size: var(--text-base);
-      line-height: var(--leading-relaxed);
+
+    .donate-body {
+      font-size: 1rem;
+      line-height: 1.7;
       color: var(--color-primary);
       opacity: 0.8;
       margin-bottom: 28px;
     }
-    .wf-donate .ph-h2 { font-size: var(--text-3xl); }
-    .wf-mobile-donate .ph-h2 { font-size: var(--text-2xl); }
 
-    /* ── PULL QUOTE ── */
-    .wf-pullquote { background: var(--color-warm); padding: 64px 48px; }
-    .wf-mobile-pullquote { padding: 44px 24px; }
-    .wf-pullquote .inner {
-      max-width: 680px;
-      margin: 0 auto;
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 36px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* ── 05 PULL QUOTE ── */
+    .pullquote {
+      background: var(--color-warm);
+      padding: 64px 48px;
       text-align: center;
     }
-    .wf-pullquote .leaf-accent {
-      width: 18px; height: 18px;
+
+    .pullquote-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .pullquote-leaf {
+      width: 18px;
+      height: 18px;
       border-radius: 50% 50% 50% 0;
       transform: rotate(-45deg);
       background: var(--color-ginkgo);
       margin: 0 auto 28px;
     }
-    .wf-pullquote .quote-text {
+
+    .pullquote-text {
       font-family: var(--font-display);
       font-style: italic;
-      font-size: var(--text-2xl);
+      font-size: 1.5rem;
       color: var(--color-primary);
-      line-height: var(--leading-snug);
+      line-height: 1.3;
       display: block;
       margin-bottom: 22px;
     }
-    .wf-mobile-pullquote .quote-text { font-size: var(--text-xl); }
-    .wf-pullquote .quote-attr {
+
+    .pullquote-attr {
       font-family: var(--font-mono);
       font-size: 11px;
       letter-spacing: 0.1em;
@@ -385,52 +360,64 @@
       color: var(--color-accent);
     }
 
-    /* ── GALLERY ── */
-    .wf-gallery { background: var(--color-bg); padding: 72px 48px; }
-    .wf-mobile-gallery { padding: 52px 24px; }
-    .wf-gallery .section-head {
+    /* ── 06 GALLERY ── */
+    .gallery {
+      background: var(--color-bg);
+      padding: 72px 48px;
+    }
+
+    .gallery-header {
       max-width: 960px;
       margin: 0 auto 36px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      flex-wrap: wrap;
       gap: 12px;
     }
-    .wf-mobile-gallery .section-head { flex-direction: column; align-items: flex-start; }
-    .wf-gallery .ph-h2 { font-size: var(--text-3xl); margin-bottom: 0; }
-    .wf-mobile-gallery .ph-h2 { font-size: var(--text-2xl); margin-bottom: 0; }
-    .wf-gallery .gallery-grid {
+
+    .gallery-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+    }
+
+    .gallery-see-all {
+      font-size: 1rem;
+      color: var(--color-accent);
+      text-decoration: underline;
+      white-space: nowrap;
+    }
+
+    .gallery-grid {
       max-width: 960px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-    .wf-mobile-gallery .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .wf-gallery .gallery-cell {
+
+    .gallery-cell {
       border-radius: 10px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      aspect-ratio: 4/3;
     }
-    .wf-gallery .gallery-cell.tall {
-      grid-row: span 2;
-    }
-    .wf-gallery .gallery-cell.wide {
-      grid-column: span 2;
-    }
-    /* aspect ratios */
-    .wf-gallery .gallery-cell:not(.tall) { aspect-ratio: 4/3; }
-    .wf-gallery .gallery-cell.tall { aspect-ratio: unset; min-height: 320px; }
-    .wf-mobile-gallery .gallery-cell.tall { min-height: 200px; }
-    .wf-mobile-gallery .gallery-cell.wide { grid-column: span 1; }
 
-    /* ── MAP / VISIT ── */
-    .wf-visit { background: var(--color-warm); padding: 72px 48px; }
-    .wf-mobile-visit { padding: 52px 24px; }
-    .wf-visit .visit-grid {
+    .gallery-cell.tall {
+      grid-row: span 2;
+      aspect-ratio: unset;
+    }
+
+    /* ── 07 LOCATION ── */
+    .location {
+      background: var(--color-warm);
+      padding: 72px 48px;
+    }
+
+    .location-grid {
       max-width: 960px;
       margin: 0 auto;
       display: grid;
@@ -438,10 +425,16 @@
       gap: 52px;
       align-items: start;
     }
-    .wf-mobile-visit .visit-grid { grid-template-columns: 1fr; gap: 32px; }
-    .wf-visit .ph-h2 { font-size: var(--text-3xl); }
-    .wf-mobile-visit .ph-h2 { font-size: var(--text-2xl); }
-    .wf-visit .detail-label {
+
+    .location-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .detail-label {
       font-family: var(--font-mono);
       font-size: 10px;
       text-transform: uppercase;
@@ -450,93 +443,107 @@
       margin-top: 20px;
       margin-bottom: 4px;
     }
-    .wf-visit .detail-value {
-      font-size: var(--text-base);
+
+    .detail-value {
+      font-size: 1rem;
       color: var(--color-text);
-      line-height: var(--leading-relaxed);
+      line-height: 1.6;
     }
-    .wf-visit .map-box {
+
+    .map-placeholder {
       border-radius: 14px;
       aspect-ratio: 16/7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background-color: #DFE8DC;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .wf-mobile-visit .map-box { aspect-ratio: 4/3; }
-    .wf-visit .map-box::before {
+
+    .map-placeholder::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background:
         repeating-linear-gradient(90deg, rgba(42,69,71,0.05) 0px, rgba(42,69,71,0.05) 1px, transparent 1px, transparent 40px),
         repeating-linear-gradient(0deg,  rgba(42,69,71,0.05) 0px, rgba(42,69,71,0.05) 1px, transparent 1px, transparent 40px);
     }
-    .wf-visit .map-pin {
-      width: 20px; height: 20px;
+
+    .map-pin {
+      width: 20px;
+      height: 20px;
       border-radius: 50% 50% 50% 0;
       transform: rotate(-45deg);
       background: var(--color-ginkgo);
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      position: relative; z-index: 1;
-    }
-    .wf-visit .map-tag {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-primary);
-      opacity: 0.45;
-      position: absolute;
-      bottom: 12px; right: 14px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ── FOOTER ── */
-    .wf-footer { background: var(--color-primary); padding: 52px 48px 36px; }
-    .wf-mobile-footer { padding: 40px 24px 28px; }
-    .wf-footer .footer-grid {
+    /* ── 08 FOOTER ── */
+    .site-footer {
+      background: var(--color-primary);
+      padding: 52px 48px 36px;
+    }
+
+    .footer-grid {
       max-width: 960px;
       margin: 0 auto 40px;
       display: grid;
       grid-template-columns: 1.5fr 1fr;
       gap: 40px;
     }
-    .wf-mobile-footer .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .wf-footer .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .wf-footer .leaf-sm {
-      width: 15px; height: 15px;
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .footer-leaf {
+      width: 15px;
+      height: 15px;
       border-radius: 50% 50% 50% 0;
       transform: rotate(-45deg);
       background: var(--color-ginkgo);
       flex-shrink: 0;
     }
-    .wf-footer .footer-wordmark {
+
+    .footer-wordmark {
       font-family: var(--font-display);
       font-style: italic;
       font-size: 16px;
       color: var(--color-bg);
     }
-    .wf-footer .footer-desc {
-      font-size: var(--text-sm);
+
+    .footer-desc {
+      font-size: 0.875rem;
       color: #6B8E90;
-      line-height: var(--leading-relaxed);
+      line-height: 1.6;
     }
-    .wf-footer .col-label {
+
+    .footer-col-label {
       font-family: var(--font-mono);
       font-size: 10px;
-      letter-spacing: var(--tracking-eyebrow);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--color-warm);
       margin-bottom: 14px;
     }
-    .wf-footer .footer-link {
+
+    .footer-link {
       display: block;
-      font-size: var(--text-sm);
+      font-size: 0.875rem;
       color: #6B8E90;
+      text-decoration: none;
       margin-bottom: 8px;
     }
-    .wf-footer .footer-bottom {
+
+    .footer-link:hover { color: var(--color-bg); }
+
+    .footer-bottom {
       max-width: 960px;
       margin: 0 auto;
       padding-top: 24px;
@@ -549,138 +556,206 @@
       flex-wrap: wrap;
       gap: 8px;
     }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      /* Nav */
+      .site-nav { padding: 0 22px; }
+      .nav-links { display: none; }
+      .nav-donate { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Hero */
+      .hero { height: 460px; }
+      .hero-content { padding: 0 22px 40px; }
+      .hero-headline { font-size: 2rem; }
+      .hero-subhead { font-size: 1rem; }
+      .btn-gold, .btn-ghost { padding: 11px 22px; font-size: 14px; }
+
+      /* Story */
+      .story { padding: 52px 22px; }
+      .story-grid { grid-template-columns: 1fr; gap: 28px; }
+      .story-photo { order: -1; }
+      .story-headline { font-size: 1.5rem; }
+
+      /* Donate */
+      .donate { padding: 52px 22px; }
+      .donate-headline { font-size: 1.5rem; }
+
+      /* Pull Quote */
+      .pullquote { padding: 44px 22px; }
+      .pullquote-text { font-size: 1.25rem; }
+
+      /* Gallery */
+      .gallery { padding: 52px 22px; }
+      .gallery-header { flex-direction: column; align-items: flex-start; }
+      .gallery-headline { font-size: 1.5rem; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      /* On mobile, flatten the tall cell and hide the 5th cell */
+      .gallery-cell.tall { grid-row: span 1; aspect-ratio: 4/3; }
+      .gallery-cell:nth-child(5) { display: none; }
+
+      /* Location */
+      .location { padding: 52px 22px; }
+      .location-grid { grid-template-columns: 1fr; gap: 32px; }
+      .location-headline { font-size: 1.5rem; }
+      .map-placeholder { aspect-ratio: 4/3; }
+
+      /* Footer */
+      .site-footer { padding: 40px 22px 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
   </style>
 </head>
 <body>
 
 <!-- 01 NAV -->
-      <div class="wf-section">
-        <nav class="wf-nav">
-          <div class="logo-area">
-            <div class="leaf"></div>
-            <span class="wordmark" style="font-size: 36px">Warner Park &amp; Gardens</span>
-          </div>
-          <div class="nav-links" style="font-size: 6px">
-            <span class="nav-link" style="font-size: 18px">About Us</span>
-            <span class="nav-link" style="font-size: 18px">Gallery</span>
-            <span class="nav-link" style="font-size: 18px">Location</span>
-          </div>
-          <div class="nav-donate" style="font-size: 18px; color: rgb(250, 250, 245)">Donate</div>
-        </nav>
-      </div>
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-leaf"></div>
+    <span class="nav-wordmark">Warner Park &amp; Gardens</span>
+  </a>
+  <div class="nav-links">
+    <a href="#story" class="nav-link">About Us</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#location" class="nav-link">Location</a>
+    <a href="#donate" class="nav-donate">Donate</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="#story">About Us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#donate">Donate</a>
+  </div>
+</nav>
 
-      <!-- 02 HERO -->
-      <div class="wf-section wf-hero">
-        <div class="photo-placeholder hatch"></div>
-        <div class="hero-scrim"></div>
-        <div class="hero-content">
-          <div class="ph-h1">Warner Park and Gardens</div>
-          <div class="ph-body-muted">Lakeview's Hidden Gem since 1987</div>
-          <div class="hero-ctas">
-            <span class="btn-gold">Donate</span>
-            <span class="btn-ghost">Find Us →</span>
-          </div>
-          <div class="ph-caption">Open Daily · All Visitors Welcome&nbsp;</div>
-        </div>
-      </div>
+<!-- 02 HERO -->
+<section class="hero">
+  <div class="hero-bg hatch"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1 class="hero-headline">Warner Park and Gardens</h1>
+    <p class="hero-subhead">Lakeview's Hidden Gem</p>
+    <div class="hero-ctas">
+      <a href="#donate" class="btn-gold">Donate</a>
+      <a href="#location" class="btn-ghost">Find Us &rarr;</a>
+    </div>
+    <p class="hero-caption">Open Daily &middot; All Visitors Welcome 
+    </p>
+  </div>
+</section>
 
-      <!-- 03 OUR STORY -->
-      <div class="wf-section wf-story">
-        <div class="story-grid">
-          <div>
-                        <div class="ph-h2">Our Story:</div>
-            <p class="ph-body">In 1933, Lois Buenger was born on Warner Avenue. She was an avid horticulturist, special education teacher, and advocate who knew the importance of tending to her community.</p>
-            <p class="ph-body">In 1987, she mortgaged her home to save a 100 year-old gingko and build a garden for her neighborhood.</p>
-            <p class="ph-body">In 1999, the City of Chicago proclaimed a Lois Buenger Day to recognize her generosity and commitment.</p>
-            <p class="ph-body">In 2001, the park became permanently publicly owned.</p>
-            <p class="ph-body">Today, it's tended by friends and neighbors for all to enjoy. And the gingko tree is still there.</p>
-          </div>
-          <div class="photo-box hatch">
-            <span class="img-tag">[Photo placeholder — 4:3]</span>
-          </div>
-        </div>
+<!-- 03 OUR STORY -->
+<section class="story" id="story">
+  <div class="story-grid">
+    <div>
+      <h2 class="story-headline">Our Story:</h2>
+      <div class="story-body">
+        <p>In 1933, Lois Buenger was born on Warner Avenue. She was an avid horticulturist, special education teacher, and advocate who knew the importance of tending to her community.</p>
+        <p>In 1987, she mortgaged her home to save a 100 year-old gingko and build a garden for her neighborhood.</p>
+        <p>In 1999, the City of Chicago proclaimed a Lois Buenger Day to recognize her generosity and commitment.</p>
+        <p>In 2001, the park became permanently publicly owned.</p>
+        <p>Today, it's tended by friends and neighbors for all to enjoy. And the gingko tree is still there.</p>
       </div>
+    </div>
+    <div class="story-photo hatch">
+      <span class="ph-tag">[Photo placeholder — 4:3]</span>
+    </div>
+  </div>
+</section>
 
-      <!-- 04 DONATE -->
-      <div class="wf-section wf-donate">
-        <div class="donate-inner">
-          <div class="ph-eyebrow-dark">GET INVOLVED</div>
-          <div class="ph-h2">Support The Park</div>
-          <p class="ph-body-donate" style="width: 590px">We are a nonprofit that survives entirely on the generosity of people like you. Every dollar goes directly to maintaining the garden.
-</p>
-          <span class="btn-primary" style="font-size: 24px; padding: 14px 24px; font-weight: 800">Donate</span>
-        </div>
+<!-- 04 DONATE -->
+<section class="donate" id="donate">
+  <div class="donate-inner">
+    <h2 class="donate-headline">Support The Park</h2>
+    <p class="donate-body">We are a nonprofit that survives entirely on the generosity of people like you. Every dollar goes directly to maintaining the garden.</p>
+    <a href="#" class="btn-primary">Donate</a>
+  </div>
+</section>
+
+<!-- 05 PULL QUOTE -->
+<section class="pullquote">
+  <div class="pullquote-inner">
+    <div class="pullquote-leaf"></div>
+    <span class="pullquote-text">&ldquo;One of a kind.&rdquo;</span>
+    <span class="pullquote-attr">Lois Buenger</span>
+  </div>
+</section>
+
+<!-- 06 GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <h2 class="gallery-headline">See Our Space</h2>
+    <a href="#" class="gallery-see-all">See all &rarr;</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-cell tall hatch"><span class="ph-tag">[Photo — tall]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+  </div>
+</section>
+
+<!-- 07 LOCATION -->
+<section class="location" id="location">
+  <div class="location-grid">
+    <div>
+      <h2 class="location-headline">Come Visit:</h2>
+      <p class="detail-label">Address</p>
+      <p class="detail-value">1446 W. Warner Ave<br>Chicago, IL 60613</p>
+      <p class="detail-label">Hours</p>
+      <p class="detail-value">6 a.m. &ndash; 11 p.m. Daily</p>
+    </div>
+    <div class="map-placeholder">
+      <div class="map-pin"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-leaf"></div>
+        <span class="footer-wordmark">Warner Park &amp; Gardens</span>
       </div>
+      <p class="footer-desc">Still Here. Still Growing.</p>
+    </div>
+    <div>
+      <p class="footer-col-label">Navigate</p>
+      <a href="#story" class="footer-link">About Us</a>
+      <a href="#gallery" class="footer-link">Gallery</a>
+      <a href="#location" class="footer-link">Location</a>
+      <a href="#donate" class="footer-link">Donate</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Warner Park &amp; Gardens &middot; 501(c)(3) &middot; Chicago, IL</span>
+    <span>Privacy &middot; Contact</span>
+  </div>
+</footer>
 
-      <!-- 05 PULL QUOTE -->
-      <div class="wf-section wf-pullquote">
-        <div class="inner">
-          <div class="leaf-accent"></div>
-          <span class="quote-text">One of a kind.</span>
-          <span class="quote-attr">Lois Buenger</span>
-        </div>
-      </div>
+<script>
+  function toggleMenu(btn) {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+  }
 
-      <!-- 06 GALLERY -->
-      <div class="wf-section wf-gallery">
-        <div class="section-head">
-          <div>
-            <div class="ph-eyebrow">WHAT'S GROWING?</div>
-            <div class="ph-h2">See Our Space</div>
-          </div>
-          <span class="ph-link">[See all →]</span>
-        </div>
-        <div class="gallery-grid">
-          <div class="gallery-cell tall hatch"><span class="img-tag">[Photo — tall]</span></div>
-          <div class="gallery-cell hatch"><span class="img-tag">[Photo]</span></div>
-          <div class="gallery-cell hatch"><span class="img-tag">[Photo]</span></div>
-          <div class="gallery-cell hatch"><span class="img-tag">[Photo]</span></div>
-          <div class="gallery-cell hatch"><span class="img-tag">[Photo]</span></div>
-        </div>
-      </div>
-
-      <!-- 07 MAP / VISIT -->
-      <div class="wf-section wf-visit">
-        <div class="visit-grid">
-          <div>
-            <div class="ph-h2">Come Visit:</div>
-            <div class="detail-label" style="font-size: 18px">Address</div>
-            <div class="detail-value" style="font-size: 24px">1446 W. Warner Ave,&nbsp;
-Chicago, IL 60613
-</div>
-            <div class="detail-label" style="font-size: 6px">Hours</div>
-            <div class="detail-value" style="font-size: 24px">6 a.m. - 11 p.m. Daily</div>
-          </div>
-          <div class="map-box">
-            <div class="map-pin"></div>
-            <span class="map-tag">[Map placeholder]</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 08 FOOTER -->
-      <div class="wf-section wf-footer">
-        <div class="footer-grid">
-          <div>
-            <div class="footer-brand">
-              <div class="leaf-sm"></div>
-              <span class="footer-wordmark">Warner Park &amp; Gardens</span>
-            </div>
-            <p class="footer-desc">Still Here. Still Growing.&nbsp;</p>
-          </div>
-          <div>
-            <div class="col-label">Navigate</div>
-            <span class="footer-link">About Us</span>
-            <span class="footer-link">Donate</span>
-            <span class="footer-link">Gallery</span>
-            <span class="footer-link">Location</span>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>Warner Park &amp; Gardens · 501(c)(3) · Chicago, IL]</span>
-          <span>[Privacy · Contact]</span>
-        </div>
-      </div>
-
+  document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>
