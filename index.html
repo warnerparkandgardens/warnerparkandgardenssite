@@ -319,6 +319,8 @@
       border-radius: 28px;
       text-decoration: none;
       display: inline-block;
+      border: none;
+      cursor: pointer;
     }
 
     /* ── 05 PULL QUOTE ── */
@@ -611,6 +613,7 @@
   </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>
 </head>
 <body>
 
@@ -678,7 +681,7 @@
   <div class="donate-inner">
     <h2 class="donate-headline">Support The Park</h2>
     <p class="donate-body">We are a nonprofit that survives entirely on the generosity of people like you. Every dollar goes directly to maintaining the garden.</p>
-    <a href="#" class="btn-primary">Donate</a>
+    <button class="btn-primary" zeffy-form-link="https://www.zeffy.com/embed/donation-form/support-warner?modal=true">Donate</button>
   </div>
 </section>
 
