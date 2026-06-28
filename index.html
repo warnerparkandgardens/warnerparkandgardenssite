@@ -468,6 +468,19 @@
       cursor: pointer;
     }
 
+    .directions-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .directions-link:hover {
+      color: var(--color-primary);
+    }
+
     /* ── 08 FOOTER ── */
     .site-footer {
       background: var(--color-primary);
@@ -704,6 +717,7 @@
       <p class="detail-value">6 a.m. &ndash; 11 p.m. Daily</p>
     </div>
     <div id="park-map" class="map-embed" role="img" aria-label="Map showing Warner Park and Gardens location"></div>
+    <a href="https://maps.google.com/?q=Warner+Garden+Park,+1446+W+Warner+Ave,+Chicago,+IL+60613" target="_blank" rel="noopener noreferrer" class="directions-link">Get Directions &rarr;</a>
   </div>
 </section>
 
@@ -749,7 +763,7 @@
   (function() {
     var map = L.map('park-map', {
       center: [41.95728, -87.66615],
-      zoom: 16,
+      zoom: 17,
       zoomControl: false,
       scrollWheelZoom: false,
       dragging: false,
@@ -766,20 +780,36 @@
       maxZoom: 19
     }).addTo(map);
 
-    var pinIcon = L.divIcon({
-      className: '',
-      html: '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40"><path d="M14 0C6.27 0 0 6.27 0 14c0 9.33 14 26 14 26S28 23.33 28 14C28 6.27 21.73 0 14 0z" fill="#C9A227"/><circle cx="14" cy="14" r="6" fill="#2A4547"/></svg>',
-      iconSize: [28, 40],
-      iconAnchor: [14, 40],
-      popupAnchor: [0, -40]
-    });
-
-    L.marker([41.95728, -87.66615], { icon: pinIcon, interactive: false }).addTo(map);
+    L.geoJSON({
+      "type": "FeatureCollection",
+      "features": [{
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-87.6663288, 41.9574173],
+            [-87.6660364, 41.9574173],
+            [-87.6660364, 41.9572099],
+            [-87.6663288, 41.9572099],
+            [-87.6663288, 41.9574173]
+          ]]
+        }
+      }]
+    }, {
+      style: {
+        color: 'transparent',
+        weight: 0,
+        fillColor: '#5B8C5A',
+        fillOpacity: 0.25
+      },
+      interactive: false
+    }).addTo(map);
 
     setTimeout(function() { map.invalidateSize(); }, 100);
 
     document.getElementById('park-map').addEventListener('click', function() {
-      window.open('https://maps.apple.com/?q=Warner+Garden+Park&address=1446+W+Warner+Ave,+Chicago,+IL+60613', '_blank');
+      window.open('https://maps.google.com/?q=Warner+Garden+Park,+1446+W+Warner+Ave,+Chicago,+IL+60613', '_blank');
     });
   })();
 </script>
