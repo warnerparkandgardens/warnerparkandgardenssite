@@ -464,12 +464,8 @@
       display: block;
       border-radius: 14px;
       overflow: hidden;
-      aspect-ratio: 16/7;
+      height: 340px;
       cursor: pointer;
-    }
-
-    #park-map {
-      height: 100%;
     }
 
     /* ── 08 FOOTER ── */
@@ -593,7 +589,7 @@
       .location { padding: 52px 22px; }
       .location-grid { grid-template-columns: 1fr; gap: 32px; }
       .location-headline { font-size: 1.5rem; }
-      .map-embed { aspect-ratio: 4/3; }
+      .map-embed { height: 280px; }
 
       /* Footer */
       .site-footer { padding: 40px 22px 28px; }
@@ -779,6 +775,8 @@
     });
 
     L.marker([41.95728, -87.66615], { icon: pinIcon, interactive: false }).addTo(map);
+
+    setTimeout(function() { map.invalidateSize(); }, 100);
 
     document.getElementById('park-map').addEventListener('click', function() {
       window.open('https://maps.apple.com/?q=Warner+Garden+Park&address=1446+W+Warner+Ave,+Chicago,+IL+60613', '_blank');
