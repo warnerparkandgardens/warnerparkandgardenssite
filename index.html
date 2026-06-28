@@ -306,7 +306,25 @@
       line-height: 1.7;
       color: var(--color-primary);
       opacity: 0.8;
-      margin-bottom: 28px;
+      margin-bottom: 16px;
+    }
+
+    .donate-note {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-bg);
+      opacity: 0.55;
+      margin-top: 16px;
+      margin-bottom: 0;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .donate-note a {
+      color: var(--color-bg);
+      opacity: 0.8;
+      text-decoration: underline;
     }
 
     .btn-primary {
@@ -314,13 +332,19 @@
       color: var(--color-bg);
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 16px;
-      padding: 14px 36px;
+      font-size: 1.125rem;
+      padding: 18px 72px;
       border-radius: 28px;
       text-decoration: none;
       display: inline-block;
       border: none;
       cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     /* ── 05 PULL QUOTE ── */
@@ -682,6 +706,7 @@
     <h2 class="donate-headline">Support The Park</h2>
     <p class="donate-body">We are a nonprofit that survives entirely on the generosity of people like you. Every dollar goes directly to maintaining the garden.</p>
     <button class="btn-primary" zeffy-form-link="https://www.zeffy.com/embed/donation-form/support-warner?modal=true">Donate</button>
+    <p class="donate-note">Powered by <a href="https://www.zeffy.com" target="_blank" rel="noopener noreferrer">Zeffy</a>, a free platform for nonprofits. At checkout you'll have the option to tip them, or set it to $0.</p>
   </div>
 </section>
 
