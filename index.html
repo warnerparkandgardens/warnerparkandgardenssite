@@ -741,6 +741,787 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Warner Park &amp; Gardens &middot; 501(c)(3) &middot; Chicago, IL</span>
+    <span><a href="privacy.html" style="color: inherit; text-decoration: underline;">Privacy</a> &middot; Contact</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(btn) {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+  }
+
+  document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  });
+</script>
+
+<script>
+  (function() {
+    var map = L.map('park-map', {
+      center: [41.95728, -87.66615],
+      zoom: 17,
+      zoomControl: false,
+      scrollWheelZoom: false,
+      dragging: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      attributionControl: true
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    L.geoJSON({
+      "type": "FeatureCollection",
+      "features": [{
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[
+            [-87.6663288, 41.9574173],
+            [-87.6660364, 41.9574173],
+            [-87.6660364, 41.9572099],
+            [-87.6663288, 41.9572099],
+            [-87.6663288, 41.9574173]
+          ]]
+        }
+      }]
+    }, {
+      style: {
+        color: 'transparent',
+        weight: 0,
+        fillColor: '#5B8C5A',
+        fillOpacity: 0.25
+      },
+      interactive: false
+    }).addTo(map);
+
+    setTimeout(function() { map.invalidateSize(); }, 100);
+
+    document.getElementById('park-map').addEventListener('click', function() {
+      window.open('https://maps.google.com/?q=Warner+Garden+Park,+1446+W+Warner+Ave,+Chicago,+IL+60613', '_blank');
+    });
+  })();
+</script>
+</body>
+</html>
+      );
+    }
+
+    /* ── 01 NAV ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-primary);
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-leaf {
+      width: 22px;
+      height: 22px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--color-ginkgo);
+      flex-shrink: 0;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--color-bg);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(250,250,245,0.75);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover { color: var(--color-bg); }
+
+    .nav-donate {
+      background: var(--color-ginkgo);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 28px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--color-warm);
+    }
+
+    /* Mobile nav drawer */
+    .nav-mobile-menu {
+      display: none;
+      position: absolute;
+      top: 66px;
+      left: 0;
+      right: 0;
+      background: var(--color-primary);
+      padding: 16px 22px 20px;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(232,220,200,0.15);
+    }
+
+    .nav-mobile-menu.open { display: flex; }
+
+    .nav-mobile-menu a {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(250,250,245,0.8);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(232,220,200,0.1);
+    }
+
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── 02 HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      height: 540px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 20%, rgba(30,45,38,0.88));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 52px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: 3.75rem;
+      color: #fff;
+      line-height: 1.1;
+      text-wrap: pretty;
+      margin-bottom: 12px;
+    }
+
+    .hero-subhead {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .btn-gold {
+      background: var(--color-ginkgo);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(250,250,245,0.45);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero-caption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+      margin-top: 18px;
+    }
+
+    /* ── 03 OUR STORY ── */
+    .story {
+      background: var(--color-bg);
+      padding: 72px 48px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .story-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .story-body p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+
+    .story-body p + p { margin-top: 1em; }
+
+    .story-photo {
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ph-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      opacity: 0.5;
+    }
+
+    /* ── 04 DONATE ── */
+    .donate {
+      background: var(--color-ginkgo);
+      padding: 72px 48px;
+      text-align: center;
+    }
+
+    .donate-inner {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .donate-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .donate-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-primary);
+      opacity: 0.8;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 36px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* ── 05 PULL QUOTE ── */
+    .pullquote {
+      background: var(--color-warm);
+      padding: 64px 48px;
+      text-align: center;
+    }
+
+    .pullquote-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .pullquote-leaf {
+      width: 18px;
+      height: 18px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--color-ginkgo);
+      margin: 0 auto 28px;
+    }
+
+    .pullquote-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      line-height: 1.3;
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .pullquote-attr {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    /* ── 06 GALLERY ── */
+    .gallery {
+      background: var(--color-bg);
+      padding: 72px 48px;
+    }
+
+    .gallery-header {
+      max-width: 960px;
+      margin: 0 auto 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .gallery-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+    }
+
+    .gallery-see-all {
+      font-size: 1rem;
+      color: var(--color-accent);
+      text-decoration: underline;
+      white-space: nowrap;
+    }
+
+    .gallery-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-cell {
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-cell.tall {
+      grid-row: span 2;
+      aspect-ratio: unset;
+    }
+
+    /* ── 07 LOCATION ── */
+    .location {
+      background: var(--color-warm);
+      padding: 72px 48px;
+    }
+
+    .location-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    .location-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .detail-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-top: 20px;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 1rem;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .location-address-link {
+      color: var(--color-text);
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent);
+      text-underline-offset: 3px;
+    }
+    .location-address-link:hover {
+      color: var(--color-accent);
+    }
+
+    .map-embed {
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      height: 340px;
+      cursor: pointer;
+    }
+
+    .directions-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .directions-link:hover {
+      color: var(--color-primary);
+    }
+
+    /* ── 08 FOOTER ── */
+    .site-footer {
+      background: var(--color-primary);
+      padding: 52px 48px 36px;
+    }
+
+    .footer-grid {
+      max-width: 960px;
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .footer-leaf {
+      width: 15px;
+      height: 15px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--color-ginkgo);
+      flex-shrink: 0;
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--color-bg);
+    }
+
+    .footer-desc {
+      font-size: 0.875rem;
+      color: #6B8E90;
+      line-height: 1.6;
+    }
+
+    .footer-col-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-warm);
+      margin-bottom: 14px;
+    }
+
+    .footer-link {
+      display: block;
+      font-size: 0.875rem;
+      color: #6B8E90;
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+
+    .footer-link:hover { color: var(--color-bg); }
+
+    .footer-bottom {
+      max-width: 960px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(232,220,200,0.12);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(107,142,144,0.6);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      /* Nav */
+      .site-nav { padding: 0 22px; }
+      .nav-links { display: none; }
+      .nav-donate { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Hero */
+      .hero { height: 460px; }
+      .hero-content { padding: 0 22px 40px; }
+      .hero-headline { font-size: 2rem; }
+      .hero-subhead { font-size: 1rem; }
+      .btn-gold, .btn-ghost { padding: 11px 22px; font-size: 14px; }
+
+      /* Story */
+      .story { padding: 52px 22px; }
+      .story-grid { grid-template-columns: 1fr; gap: 28px; }
+      .story-photo { order: -1; }
+      .story-headline { font-size: 1.5rem; }
+
+      /* Donate */
+      .donate { padding: 52px 22px; }
+      .donate-headline { font-size: 1.5rem; }
+
+      /* Pull Quote */
+      .pullquote { padding: 44px 22px; }
+      .pullquote-text { font-size: 1.25rem; }
+
+      /* Gallery */
+      .gallery { padding: 52px 22px; }
+      .gallery-header { flex-direction: column; align-items: flex-start; }
+      .gallery-headline { font-size: 1.5rem; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      /* On mobile, flatten the tall cell and hide the 5th cell */
+      .gallery-cell.tall { grid-row: span 1; aspect-ratio: 4/3; }
+      .gallery-cell:nth-child(5) { display: none; }
+
+      /* Location */
+      .location { padding: 52px 22px; }
+      .location-grid { grid-template-columns: 1fr; gap: 32px; }
+      .location-headline { font-size: 1.5rem; }
+      .map-embed { height: 280px; }
+
+      /* Footer */
+      .site-footer { padding: 40px 22px 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- 01 NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-leaf"></div>
+    <span class="nav-wordmark">Warner Park &amp; Gardens</span>
+  </a>
+  <div class="nav-links">
+    <a href="#story" class="nav-link">About Us</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#location" class="nav-link">Location</a>
+    <a href="#donate" class="nav-donate">Donate</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="#story">About Us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#donate">Donate</a>
+  </div>
+</nav>
+
+<!-- 02 HERO -->
+<section class="hero">
+  <div class="hero-bg hatch"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1 class="hero-headline">Warner Park and Gardens</h1>
+    <p class="hero-subhead">Lakeview's Hidden Gem</p>
+    <div class="hero-ctas">
+      <a href="#donate" class="btn-gold">Donate</a>
+      <a href="#location" class="btn-ghost">Find Us &rarr;</a>
+    </div>
+    <p class="hero-caption">Open Daily &middot; All Visitors Welcome 
+    </p>
+  </div>
+</section>
+
+<!-- 03 OUR STORY -->
+<section class="story" id="story">
+  <div class="story-grid">
+    <div>
+      <h2 class="story-headline">Our Story:</h2>
+      <div class="story-body">
+        <p>In 1933, Lois Buenger was born on Warner Avenue. She was an avid horticulturist, special education teacher, and advocate who knew the importance of tending to her community.</p>
+        <p>In 1987, she mortgaged her home to save a 100 year-old gingko and build a garden for her neighborhood.</p>
+        <p>In 1999, the City of Chicago proclaimed a Lois Buenger Day to recognize her generosity and commitment.</p>
+        <p>In 2001, the park became permanently publicly owned.</p>
+        <p>Today, it's tended by friends and neighbors for all to enjoy. And the gingko tree is still there.</p>
+      </div>
+    </div>
+    <div class="story-photo hatch">
+      <span class="ph-tag">[Photo placeholder — 4:3]</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 DONATE -->
+<section class="donate" id="donate">
+  <div class="donate-inner">
+    <h2 class="donate-headline">Support The Park</h2>
+    <p class="donate-body">We are a nonprofit that survives entirely on the generosity of people like you. Every dollar goes directly to maintaining the garden.</p>
+    <a href="#" class="btn-primary">Donate</a>
+  </div>
+</section>
+
+<!-- 05 PULL QUOTE -->
+<section class="pullquote">
+  <div class="pullquote-inner">
+    <div class="pullquote-leaf"></div>
+    <span class="pullquote-text">&ldquo;One of a kind.&rdquo;</span>
+    <span class="pullquote-attr">Lois Buenger</span>
+  </div>
+</section>
+
+<!-- 06 GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <h2 class="gallery-headline">See Our Space</h2>
+    <a href="#" class="gallery-see-all">See all &rarr;</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-cell tall hatch"><span class="ph-tag">[Photo — tall]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+  </div>
+</section>
+
+<!-- 07 LOCATION -->
+<section class="location" id="location">
+  <div class="location-grid">
+    <div>
+      <h2 class="location-headline">Come Visit:</h2>
+      <p class="detail-label">Address</p>
+      <p class="detail-value"><a href="https://maps.google.com/?q=Warner+Garden+Park,+1446+W+Warner+Ave,+Chicago,+IL+60613" target="_blank" rel="noopener noreferrer" class="location-address-link">1446 W. Warner Ave<br>Chicago, IL 60613</a></p>
+      <p class="detail-label">Hours</p>
+      <p class="detail-value">6 a.m. &ndash; 11 p.m. Daily</p>
+    </div>
+    <div id="park-map" class="map-embed" role="img" aria-label="Map showing Warner Park and Gardens location"></div>
+    <a href="https://maps.google.com/?q=Warner+Garden+Park,+1446+W+Warner+Ave,+Chicago,+IL+60613" target="_blank" rel="noopener noreferrer" class="directions-link">Get Directions &rarr;</a>
+  </div>
+</section>
+
+<!-- 08 FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-leaf"></div>
+        <span class="footer-wordmark">Warner Park &amp; Gardens</span>
+      </div>
+      <p class="footer-desc">Still Here. Still Growing.</p>
+    </div>
+    <div>
+      <p class="footer-col-label">Navigate</p>
+      <a href="#story" class="footer-link">About Us</a>
+      <a href="#gallery" class="footer-link">Gallery</a>
+      <a href="#location" class="footer-link">Location</a>
+      <a href="#donate" class="footer-link">Donate</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Warner Park &amp; Gardens &middot; 501(c)(3) &middot; Chicago, IL</span>
     <span>Privacy &middot; Contact</span>
   </div>
 </footer>
