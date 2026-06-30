@@ -538,7 +538,9 @@
       img.loading = i < 6 ? 'eager' : 'lazy';
       img.decoding = 'async';
       figure.appendChild(img);
-      figure.innerHTML += expandIconSVG;
+      const tmpl = document.createElement('template');
+      tmpl.innerHTML = expandIconSVG;
+      figure.appendChild(tmpl.content.firstChild);
       galleryContainer.appendChild(figure);
     });
   }
