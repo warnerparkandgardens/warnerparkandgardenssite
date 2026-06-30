@@ -440,16 +440,22 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      align-items: start;
     }
 
     .gallery-card {
-      position: relative;
-      aspect-ratio: 3/2;
+      aspect-ratio: 3 / 2;
       border-radius: 8px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .expand-icon {
