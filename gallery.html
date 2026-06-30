@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photos of Warner Park and Gardens — a passive ornamental garden at 1444 W Warner Ave in Chicago's Graceland West neighborhood.">
+  <title>Gallery — Warner Park &amp; Gardens</title>
+  <link rel="canonical" href="gallery.html">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-primary:    #2A4547;
+      --color-accent:     #5B8C5A;
+      --color-ginkgo:     #C9A227;
+      --color-warm:       #E8DCC8;
+      --color-bg:         #FAFAF5;
+      --color-text:       #2D2D2D;
+      --color-text-muted: #6B6B6B;
+      --font-display: 'DM Serif Display', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    /* ── Shared image placeholder ── */
+    .hatch {
+      background-color: #CDD5C8;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(42,69,71,0.07) 0px, rgba(42,69,71,0.07) 1px,
+        transparent 1px, transparent 8px
+      );
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-primary);
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-leaf {
+      width: 22px;
+      height: 22px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--color-ginkgo);
+      flex-shrink: 0;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--color-bg);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(250,250,245,0.75);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover { color: var(--color-bg); }
+
+    .nav-link[aria-current="page"] {
+      color: var(--color-bg);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-donate {
+      background: var(--color-ginkgo);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 28px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--color-warm);
+    }
+
+    .nav-mobile-menu {
+      display: none;
+      position: absolute;
+      top: 66px;
+      left: 0;
+      right: 0;
+      background: var(--color-primary);
+      padding: 16px 22px 20px;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(232,220,200,0.15);
+      align-items: flex-start;
+    }
+
+    .nav-mobile-menu.open { display: flex; }
+
+    .nav-mobile-menu a {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(250,250,245,0.8);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(232,220,200,0.1);
+    }
+
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+
+    .nav-mobile-menu a,
+    .nav-mobile-menu div {
+      width: 100%;
+    }
+
+    .nav-donate-btn {
+      color: var(--color-ginkgo) !important;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ── PAGE HEADER ── */
+    .gallery-header {
+      background: var(--color-bg);
+      padding: 64px 48px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(42,69,71,0.08);
+    }
+
+    .gallery-header h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .gallery-subline {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-top: 16px;
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover { color: var(--color-primary); }
+
+    /* ── GALLERY GRID ── */
+    .gallery-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 48px 72px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+    }
+
+    .img-placeholder {
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .img-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      opacity: 0.5;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--color-primary);
+      padding: 52px 48px 36px;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .footer-leaf {
+      width: 15px;
+      height: 15px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--color-ginkgo);
+      flex-shrink: 0;
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--color-bg);
+    }
+
+    .footer-desc {
+      font-size: 0.875rem;
+      color: #6B8E90;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(232,220,200,0.12);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(107,142,144,0.6);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-bottom a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .site-nav { padding: 0 22px; }
+      .nav-links { display: none; }
+      .nav-donate { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .gallery-header { padding: 44px 22px 36px; }
+      .gallery-header h1 { font-size: 1.75rem; }
+
+      .gallery-grid {
+        padding: 32px 22px 52px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .site-footer { padding: 40px 22px 28px; }
+    }
+
+    @media (max-width: 479px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-leaf"></div>
+    <span class="nav-wordmark">Warner Park &amp; Gardens</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#story" class="nav-link">About Us</a>
+    <a href="gallery.html" class="nav-link" aria-current="page">Gallery</a>
+    <a href="index.html#location" class="nav-link">Location</a>
+    <a href="index.html#donate" class="nav-donate">Donate</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="index.html#story">About Us</a>
+    <a href="gallery.html" aria-current="page">Gallery</a>
+    <a href="index.html#location">Location</a>
+    <a href="index.html#donate" class="nav-donate-btn">Donate</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="gallery-header">
+  <h1>See Our Space</h1>
+  <p class="gallery-subline">1446 W Warner Ave &middot; Graceland West &middot; Chicago</p>
+  <a href="index.html" class="back-link">&larr; Back to homepage</a>
+</header>
+
+<!-- GALLERY GRID -->
+<section class="gallery-grid">
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+  <figure>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+  </figure>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-leaf"></div>
+      <span class="footer-wordmark">Warner Park &amp; Gardens</span>
+    </div>
+    <p class="footer-desc">Still Here. Still Growing.</p>
+    <div class="footer-bottom">
+      <a href="index.html">&larr; Back to homepage</a>
+      <span><a href="privacy.html">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(btn) {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+  }
+
+  document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
