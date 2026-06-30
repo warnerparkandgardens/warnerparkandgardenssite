@@ -830,14 +830,7 @@
     <h2 class="gallery-headline">See Our Space</h2>
     <a href="gallery.html" class="gallery-see-all">See all &rarr;</a>
   </div>
-  <div class="gallery-carousel">
-    <div class="gallery-card hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-    <div class="gallery-card hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-    <div class="gallery-card hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-    <div class="gallery-card hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-    <div class="gallery-card hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-    <div class="gallery-card hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-  </div>
+  <div class="gallery-carousel" id="homepageGallery"></div>
 </section>
 
 <!-- 07 LOCATION -->
@@ -954,16 +947,47 @@
 </div>
 
 <script>
-  document.querySelectorAll('.gallery-card img').forEach(img => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => {
+  // Homepage gallery — first 6 files shown on desktop grid and mobile carousel.
+  // To reorder or swap, change this array only.
+  const homepagePhotos = [
+    { src: '01-planter-box.jpg',     alt: 'Planter box in Warner Park and Gardens' },
+    { src: '02-mushroom.jpg',        alt: 'Mushroom sculpture in Warner Park and Gardens' },
+    { src: '03-flower-pedestal.jpg', alt: 'Flower pedestal in Warner Park and Gardens' },
+    { src: '04-bench.jpg',           alt: 'Garden bench in Warner Park and Gardens' },
+    { src: '05-skyline.jpg',         alt: 'Chicago skyline view from Warner Park' },
+    { src: '06-bunny.jpg',           alt: 'Bunny in Warner Park and Gardens' },
+  ];
+
+  const expandIconSVG = `<span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span>`;
+
+  const homepageContainer = document.getElementById('homepageGallery');
+  if (homepageContainer) {
+    homepagePhotos.forEach((photo) => {
+      const figure = document.createElement('figure');
+      figure.className = 'gallery-card';
+      const img = document.createElement('img');
+      img.src = `/images/gallery/${photo.src}`;
+      img.alt = photo.alt;
+      img.loading = 'eager';
+      img.decoding = 'async';
+      figure.appendChild(img);
+      figure.innerHTML += expandIconSVG;
+      homepageContainer.appendChild(figure);
+    });
+  }
+</script>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.gallery-card');
+    if (card && e.target.tagName === 'IMG') {
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
+      lightboxImg.src = e.target.src;
+      lightboxImg.alt = e.target.alt;
       lightbox.classList.add('active');
       lightbox.setAttribute('aria-hidden', 'false');
-    });
+    }
   });
 
   document.getElementById('lightbox').addEventListener('click', (e) => {
