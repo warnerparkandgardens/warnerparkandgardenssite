@@ -976,6 +976,9 @@
       img.alt = photo.alt;
       img.loading = 'eager';
       img.decoding = 'async';
+      img.addEventListener('error', () => {
+        figure.style.display = 'none';
+      });
       figure.appendChild(img);
       figure.innerHTML += expandIconSVG;
       homepageContainer.appendChild(figure);

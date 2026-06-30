@@ -537,6 +537,9 @@
       img.alt = photo.alt;
       img.loading = i < 6 ? 'eager' : 'lazy';
       img.decoding = 'async';
+      img.addEventListener('error', () => {
+        figure.style.display = 'none';
+      });
       figure.appendChild(img);
       const tmpl = document.createElement('template');
       tmpl.innerHTML = expandIconSVG;
