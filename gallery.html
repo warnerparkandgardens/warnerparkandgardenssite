@@ -248,6 +248,26 @@
       opacity: 1;
     }
 
+    /* ── GALLERY HERO CARD ── */
+    .gallery-card--hero {
+      grid-column: 1 / -1;
+      aspect-ratio: 2 / 1;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-card--hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+      display: block;
+    }
+    .gallery-card--hero:hover .expand-icon {
+      opacity: 1;
+    }
+
     .img-label {
       font-family: var(--font-mono);
       font-size: 10px;
@@ -364,6 +384,9 @@
         padding: 32px 22px 52px;
         grid-template-columns: repeat(2, 1fr);
       }
+      .gallery-card--hero {
+        aspect-ratio: 2 / 1;
+      }
 
       .site-footer { padding: 40px 22px 28px; }
     }
@@ -408,23 +431,21 @@
 
 <!-- GALLERY GRID -->
 <section class="gallery-grid">
-  <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-  </figure>
-  <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-  </figure>
-  <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-  </figure>
-  <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-  </figure>
-  <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
-  </figure>
-  <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
+  <figure class="gallery-card gallery-card--hero">
+    <img
+      src="/images/hero/hero-main.jpg"
+      alt="Warner Park and Gardens — shaded garden path beneath the tree canopy"
+      loading="eager"
+      decoding="async"
+    >
+    <span class="expand-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <polyline points="9 21 3 21 3 15"></polyline>
+        <line x1="21" y1="3" x2="14" y2="10"></line>
+        <line x1="3" y1="21" x2="10" y2="14"></line>
+      </svg>
+    </span>
   </figure>
   <figure>
     <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
