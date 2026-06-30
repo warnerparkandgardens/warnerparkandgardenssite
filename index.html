@@ -403,7 +403,7 @@
     }
 
     .gallery-header {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto 36px;
       display: flex;
       justify-content: space-between;
@@ -425,26 +425,30 @@
       white-space: nowrap;
     }
 
-    .gallery-grid {
-      max-width: 960px;
+    .gallery-carousel {
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 12px;
     }
 
-    .gallery-cell {
-      border-radius: 10px;
+    .gallery-card {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 4/3;
     }
 
-    .gallery-cell.tall {
-      grid-row: span 2;
-      aspect-ratio: unset;
+    .img-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      opacity: 0.5;
     }
 
     /* ── 07 LOCATION ── */
@@ -640,16 +644,25 @@
       .pullquote-text { font-size: 1.25rem; }
 
       /* Gallery */
-      .gallery { padding: 52px 22px; }
-      .gallery-header { flex-direction: column; align-items: flex-start; }
+      .gallery { padding: 52px 0; }
+      .gallery-header { flex-direction: column; align-items: flex-start; padding: 0 22px; }
       .gallery-headline { font-size: 1.5rem; }
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+      .gallery-carousel {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0 24px;
+        max-width: none;
+        margin: 0;
       }
-      /* On mobile, flatten the tall cell and hide the 5th cell */
-      .gallery-cell.tall { grid-row: span 1; aspect-ratio: 4/3; }
-      .gallery-cell:nth-child(5) { display: none; }
+      .gallery-carousel::-webkit-scrollbar { display: none; }
+      .gallery-carousel .gallery-card {
+        flex: 0 0 85vw;
+        scroll-snap-align: center;
+      }
 
       /* Location */
       .location { padding: 52px 22px; }
@@ -750,14 +763,15 @@
 <section class="gallery" id="gallery">
   <div class="gallery-header">
     <h2 class="gallery-headline">See Our Space</h2>
-    <a href="#" class="gallery-see-all">See all &rarr;</a>
+    <a href="gallery.html" class="gallery-see-all">See all &rarr;</a>
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-cell tall hatch"><span class="ph-tag">[Photo — tall]</span></div>
-    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
-    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
-    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
-    <div class="gallery-cell hatch"><span class="ph-tag">[Photo]</span></div>
+  <div class="gallery-carousel">
+    <div class="gallery-card hatch"><span class="img-label">[Photo]</span></div>
+    <div class="gallery-card hatch"><span class="img-label">[Photo]</span></div>
+    <div class="gallery-card hatch"><span class="img-label">[Photo]</span></div>
+    <div class="gallery-card hatch"><span class="img-label">[Photo]</span></div>
+    <div class="gallery-card hatch"><span class="img-label">[Photo]</span></div>
+    <div class="gallery-card hatch"><span class="img-label">[Photo]</span></div>
   </div>
 </section>
 
