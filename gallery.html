@@ -385,6 +385,27 @@
       line-height: 1;
       padding: 8px;
     }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(42, 69, 71, 0.6);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 48px;
+      height: 48px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, opacity 0.15s ease;
+      z-index: 1001;
+    }
+    .lightbox-nav:hover { background: rgba(42, 69, 71, 0.85); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 767px) {
@@ -496,7 +517,9 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&#8592;</button>
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">&#8594;</button>
 </div>
 
 <script>
@@ -527,6 +550,19 @@
 
   const expandIconSVG = `<span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span>`;
 
+  let currentLightboxIndex = 0;
+  let lightboxImages = [];
+
+  // Include the hero image as the first navigable item
+  const heroImg = document.querySelector('.gallery-card--hero img');
+  if (heroImg) {
+    lightboxImages.push(heroImg);
+    heroImg.addEventListener('click', () => {
+      currentLightboxIndex = lightboxImages.indexOf(heroImg);
+      openLightbox(currentLightboxIndex);
+    });
+  }
+
   const galleryContainer = document.getElementById('galleryPageGrid');
   if (galleryContainer) {
     galleryPhotos.forEach((photo, i) => {
@@ -540,6 +576,11 @@
       img.addEventListener('error', () => {
         figure.style.display = 'none';
       });
+      lightboxImages.push(img);
+      img.addEventListener('click', () => {
+        currentLightboxIndex = lightboxImages.indexOf(img);
+        openLightbox(currentLightboxIndex);
+      });
       figure.appendChild(img);
       const tmpl = document.createElement('template');
       tmpl.innerHTML = expandIconSVG;
@@ -550,17 +591,17 @@
 </script>
 
 <script>
-  document.addEventListener('click', (e) => {
-    const card = e.target.closest('.gallery-card');
-    if (card && e.target.tagName === 'IMG') {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      lightboxImg.src = e.target.src;
-      lightboxImg.alt = e.target.alt;
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden', 'false');
-    }
-  });
+  function openLightbox(index) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    currentLightboxIndex = index;
+    lightboxImg.src = lightboxImages[index].src;
+    lightboxImg.alt = lightboxImages[index].alt;
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.getElementById('lightboxPrev').style.opacity = index === 0 ? '0.3' : '1';
+    document.getElementById('lightboxNext').style.opacity = index === lightboxImages.length - 1 ? '0.3' : '1';
+  }
 
   document.getElementById('lightbox').addEventListener('click', (e) => {
     if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
@@ -570,11 +611,28 @@
     }
   });
 
+  document.getElementById('lightboxPrev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentLightboxIndex > 0) openLightbox(currentLightboxIndex - 1);
+  });
+
+  document.getElementById('lightboxNext').addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentLightboxIndex < lightboxImages.length - 1) openLightbox(currentLightboxIndex + 1);
+  });
+
   document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') {
-      const lightbox = document.getElementById('lightbox');
       lightbox.classList.remove('active');
       lightbox.setAttribute('aria-hidden', 'true');
+    }
+    if (e.key === 'ArrowRight' && currentLightboxIndex < lightboxImages.length - 1) {
+      openLightbox(currentLightboxIndex + 1);
+    }
+    if (e.key === 'ArrowLeft' && currentLightboxIndex > 0) {
+      openLightbox(currentLightboxIndex - 1);
     }
   });
 </script>
