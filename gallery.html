@@ -293,6 +293,41 @@
       text-decoration: underline;
     }
 
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 30, 30, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 8px;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 767px) {
       .site-nav { padding: 0 22px; }
@@ -451,6 +486,41 @@
     link.addEventListener('click', function() {
       document.getElementById('mobile-menu').classList.remove('open');
     });
+  });
+</script>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  document.querySelectorAll('.gallery-card img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+    }
   });
 </script>
 </body>
