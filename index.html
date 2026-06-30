@@ -162,19 +162,28 @@
     /* ── 02 HERO ── */
     .hero {
       position: relative;
+      height: 60vh;
+      min-height: 420px;
+      max-height: 640px;
       overflow: hidden;
-      height: 540px;
     }
 
-    .hero-bg {
+    .hero-img {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+      z-index: 0;
     }
 
-    .hero-scrim {
+    .hero::after {
+      content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 20%, rgba(30,45,38,0.88));
+      background: linear-gradient(to top, rgba(42, 69, 71, 0.65) 0%, rgba(42, 69, 71, 0.25) 45%, rgba(42, 69, 71, 0) 75%);
+      z-index: 1;
     }
 
     .hero-content {
@@ -706,9 +715,8 @@
 </nav>
 
 <!-- 02 HERO -->
-<section class="hero">
-  <div class="hero-bg hatch"></div>
-  <div class="hero-scrim"></div>
+<section class="hero" id="hero">
+  <img src="/images/hero/hero-main.jpg" alt="Warner Park and Gardens — shaded garden path beneath the tree canopy" class="hero-img">
   <div class="hero-content">
     <h1 class="hero-headline">Warner Park and Gardens</h1>
     <p class="hero-subhead">Lakeview's Hidden Gem</p>
@@ -716,7 +724,7 @@
       <a href="#donate" class="btn-gold">Donate</a>
       <a href="#location" class="btn-ghost">Find Us &rarr;</a>
     </div>
-    <p class="hero-caption">Open Daily &middot; All Visitors Welcome 
+    <p class="hero-caption">Open Daily &middot; All Visitors Welcome
     </p>
   </div>
 </section>
