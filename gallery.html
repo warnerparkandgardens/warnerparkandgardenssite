@@ -218,12 +218,34 @@
     }
 
     .img-placeholder {
+      position: relative;
       aspect-ratio: 4/3;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
       overflow: hidden;
+    }
+
+    .expand-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(42, 69, 71, 0.55);
+      color: white;
+      border-radius: 6px;
+      opacity: 0.75;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .img-placeholder:hover .expand-icon {
+      opacity: 1;
     }
 
     .img-label {
@@ -387,76 +409,76 @@
 <!-- GALLERY GRID -->
 <section class="gallery-grid">
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
   <figure>
-    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span></div>
+    <div class="img-placeholder hatch"><span class="img-label">[Photo]</span><span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></div>
   </figure>
 </section>
 
