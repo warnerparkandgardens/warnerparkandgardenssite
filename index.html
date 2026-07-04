@@ -231,6 +231,31 @@
       display: inline-block;
     }
 
+    .btn-gold:hover {
+      background: #AA8A21;
+      transform: translateY(-2px);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-primary-fill {
+      background: var(--color-accent);
+      color: var(--color-bg);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+      border: none;
+    }
+
+    .btn-primary-fill:hover {
+      background: #4F7A4E;
+      transform: translateY(-2px);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
     .btn-ghost {
       border: 1.5px solid rgba(250,250,245,0.45);
       color: #fff;
@@ -241,6 +266,12 @@
       border-radius: 28px;
       text-decoration: none;
       display: inline-block;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(250,250,245,0.75);
+      transform: translateY(-2px);
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
     .hero-caption {
@@ -361,7 +392,7 @@
     }
 
     .btn-primary:hover {
-      background: var(--color-accent);
+      background: #21373A;
       transform: translateY(-2px);
       transition: background 0.2s ease, transform 0.2s ease;
     }
@@ -486,6 +517,51 @@
       letter-spacing: 0.1em;
       color: var(--color-primary);
       opacity: 0.5;
+    }
+
+    /* ── 06.5 RENT THE PARK ── */
+    .rent-preview {
+      background: var(--color-primary);
+      padding: 72px 48px;
+      text-align: center;
+    }
+
+    .rent-preview-inner {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .rent-preview-headline {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-bg);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .rent-preview-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(250,250,245,0.8);
+      margin-bottom: 24px;
+    }
+
+    .btn-accent {
+      background: var(--color-accent);
+      color: var(--color-bg);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-accent:hover {
+      background: #4F7A4E;
+      transform: translateY(-2px);
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     /* ── LIGHTBOX ── */
@@ -720,7 +796,7 @@
       .hero-content { padding: 0 22px 40px; }
       .hero-headline { font-size: 2rem; }
       .hero-subhead { font-size: 1rem; }
-      .btn-gold, .btn-ghost { padding: 11px 22px; font-size: 14px; }
+      .btn-gold, .btn-ghost, .btn-primary-fill { padding: 11px 22px; font-size: 14px; }
 
       /* Story */
       .story { padding: 52px 22px; }
@@ -757,6 +833,10 @@
         scroll-snap-align: center;
       }
 
+      /* Rent Preview */
+      .rent-preview { padding: 52px 22px; }
+      .rent-preview-headline { font-size: 1.5rem; }
+
       /* Location */
       .location { padding: 52px 22px; }
       .location-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -783,6 +863,7 @@
   <div class="nav-links">
     <a href="#story" class="nav-link">About Us</a>
     <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="#rent-preview" class="nav-link">Rentals</a>
     <a href="#location" class="nav-link">Location</a>
     <a href="#donate" class="nav-donate">Donate</a>
   </div>
@@ -793,6 +874,7 @@
   <div class="nav-mobile-menu" id="mobile-menu">
     <a href="#story">About Us</a>
     <a href="gallery.html">Gallery</a>
+    <a href="#rent-preview">Rentals</a>
     <a href="#location">Location</a>
     <a href="#donate" class="nav-donate-btn">Donate</a>
   </div>
@@ -806,6 +888,7 @@
     <p class="hero-subhead">Lakeview's Hidden Gem</p>
     <div class="hero-ctas">
       <a href="#donate" class="btn-gold">Donate</a>
+      <a href="#rent-preview" class="btn-primary-fill">Rent the Park</a>
       <a href="#location" class="btn-ghost">Find Us &rarr;</a>
     </div>
     <p class="hero-caption">Open Daily &middot; All Visitors Welcome
@@ -860,6 +943,15 @@
   <div class="gallery-carousel" id="homepageGallery"></div>
 </section>
 
+<!-- 06.5 RENT THE PARK -->
+<section class="rent-preview" id="rent-preview">
+  <div class="rent-preview-inner">
+    <h2 class="rent-preview-headline">Rent the Park</h2>
+    <p class="rent-preview-body">Friends &amp; neighbors have celebrated birthdays, reunions, and weddings here. Come enjoy the perennial gardens and shaded paths for your next event!</p>
+    <a href="#rent-preview" class="btn-accent">See Rental Details &rarr;</a>
+  </div>
+</section>
+
 <!-- 07 LOCATION -->
 <section class="location" id="location">
   <div class="location-grid">
@@ -889,6 +981,7 @@
       <p class="footer-col-label">Navigate</p>
       <a href="#story" class="footer-link">About Us</a>
       <a href="#gallery" class="footer-link">Gallery</a>
+      <a href="#rent-preview" class="footer-link">Rentals</a>
       <a href="#location" class="footer-link">Location</a>
       <a href="#donate" class="footer-link footer-donate">Donate</a>
     </div>
