@@ -104,6 +104,12 @@
       white-space: nowrap;
     }
 
+    .nav-donate-btn {
+      color: var(--color-ginkgo) !important;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -280,25 +286,27 @@
 
 <!-- 01 NAV -->
 <nav class="site-nav">
-  <a href="/" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <div class="nav-leaf"></div>
     <span class="nav-wordmark">Warner Park &amp; Gardens</span>
   </a>
   <div class="nav-links">
-    <a href="/#story" class="nav-link">About Us</a>
-    <a href="/#gallery" class="nav-link">Gallery</a>
-    <a href="/#location" class="nav-link">Location</a>
-    <a href="/#donate" class="nav-donate">Donate</a>
+    <a href="index.html#story" class="nav-link">About Us</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="rentals.html" class="nav-link">Rentals</a>
+    <a href="index.html#location" class="nav-link">Location</a>
+    <a href="index.html#donate" class="nav-donate">Donate</a>
   </div>
   <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu(this)">
     <span></span>
     <span></span>
   </button>
   <div class="nav-mobile-menu" id="mobile-menu">
-    <a href="/#story">About Us</a>
-    <a href="/#gallery">Gallery</a>
-    <a href="/#location">Location</a>
-    <a href="/#donate">Donate</a>
+    <a href="index.html#story">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="rentals.html">Rentals</a>
+    <a href="index.html#location">Location</a>
+    <a href="index.html#donate" class="nav-donate-btn">Donate</a>
   </div>
 </nav>
 

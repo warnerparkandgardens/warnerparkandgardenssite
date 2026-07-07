@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rent Warner Park and Gardens for your next birthday, reunion, or gathering — a private garden venue at 1446 W Warner Ave in Chicago's Graceland West neighborhood.">
+  <title>Rent the Park — Warner Park &amp; Gardens</title>
+  <link rel="canonical" href="rentals.html">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-padding-top: 60px; }
+
+    :root {
+      --color-primary:    #2A4547;
+      --color-accent:     #5B8C5A;
+      --color-ginkgo:     #C9A227;
+      --color-warm:       #E8DCC8;
+      --color-bg:         #FAFAF5;
+      --color-text:       #2D2D2D;
+      --color-text-muted: #6B6B6B;
+      --font-display: 'DM Serif Display', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    .hatch {
+      background-color: #CDD5C8;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(42,69,71,0.07) 0px, rgba(42,69,71,0.07) 1px,
+        transparent 1px, transparent 8px
+      );
+    }
+
+    /* ── NAV (shared) ── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--color-primary);
+      height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; gap: 16px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-leaf { width: 22px; height: 22px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--color-ginkgo); flex-shrink: 0; }
+    .nav-wordmark { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--color-bg); white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+    .nav-link { font-family: var(--font-body); font-size: 14px; color: rgba(250,250,245,0.75); text-decoration: none; white-space: nowrap; }
+    .nav-link:hover { color: var(--color-bg); }
+    .nav-link[aria-current="page"] {
+      color: var(--color-bg);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .nav-donate { background: var(--color-ginkgo); color: var(--color-primary); font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 8px 20px; border-radius: 28px; text-decoration: none; white-space: nowrap; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-hamburger span { display: block; width: 18px; height: 1.5px; background: var(--color-warm); }
+    .nav-mobile-menu { display: none; position: absolute; top: 66px; left: 0; right: 0; background: var(--color-primary); padding: 16px 22px 20px; flex-direction: column; gap: 0; border-top: 1px solid rgba(232,220,200,0.15); align-items: flex-start; }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a { display: block; font-family: var(--font-body); font-size: 16px; color: rgba(250,250,245,0.8); text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(232,220,200,0.1); width: 100%; }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-donate-btn { color: var(--color-ginkgo) !important; font-weight: 700; text-decoration: none; }
+
+    /* ── RENTALS HERO ── */
+    .rentals-hero {
+      background: var(--color-bg);
+      padding: 64px 48px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(42,69,71,0.08);
+    }
+    .rentals-hero-inner { max-width: 640px; margin: 0 auto; }
+    .rentals-hero-headline {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .rentals-hero-tagline {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+    }
+    .back-link {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-top: 16px;
+    }
+    .back-link:hover { color: var(--color-primary); }
+
+    /* ── RENTALS INFO ── */
+    .rentals-info {
+      background: var(--color-warm);
+      padding: 64px 48px;
+      text-align: center;
+    }
+    .rentals-facts {
+      list-style: none;
+      max-width: 460px;
+      margin: 0 auto 32px;
+    }
+    .rentals-facts li {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      color: var(--color-primary);
+      line-height: 2;
+    }
+    .rentals-cta {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.375rem;
+      color: var(--color-primary);
+    }
+
+    /* ── GALLERY (shared) ── */
+    .gallery { background: var(--color-bg); padding: 72px 48px; }
+    .gallery-header { max-width: 1100px; margin: 0 auto 36px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+    .gallery-headline { font-family: var(--font-display); font-size: 2rem; color: var(--color-primary); line-height: 1.2; }
+    .gallery-see-all { font-size: 1rem; color: var(--color-accent); text-decoration: underline; white-space: nowrap; }
+    .gallery-carousel { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+    .gallery-card { aspect-ratio: 3 / 2; border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .expand-icon { position: absolute; bottom: 10px; right: 10px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: rgba(42, 69, 71, 0.55); color: white; border-radius: 6px; opacity: 0.75; pointer-events: none; transition: opacity 0.15s ease; }
+    .gallery-card:hover .expand-icon { opacity: 1; }
+
+    /* ── LIGHTBOX (shared) ── */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(20, 30, 30, 0.92); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.active { display: flex; }
+    .lightbox-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px; }
+    .lightbox-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: white; font-size: 32px; cursor: pointer; line-height: 1; padding: 8px; }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(42, 69, 71, 0.6); color: white; border: none; border-radius: 8px; width: 48px; height: 48px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s ease, opacity 0.15s ease; z-index: 1001; }
+    .lightbox-nav:hover { background: rgba(42, 69, 71, 0.85); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    /* ── FOOTER (shared) ── */
+    .site-footer { background: var(--color-primary); padding: 52px 48px 36px; }
+    .footer-grid { max-width: 960px; margin: 0 auto 40px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .footer-leaf { width: 15px; height: 15px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--color-ginkgo); flex-shrink: 0; }
+    .footer-wordmark { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--color-bg); }
+    .footer-desc { font-size: 0.875rem; color: #6B8E90; line-height: 1.6; }
+    .footer-col-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-warm); margin-bottom: 14px; }
+    .footer-link { display: block; font-size: 0.875rem; color: #6B8E90; text-decoration: none; margin-bottom: 8px; }
+    .footer-link:hover { color: var(--color-bg); }
+    .footer-donate { color: var(--color-ginkgo) !important; font-weight: 600; }
+    .footer-bottom { max-width: 960px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(232,220,200,0.12); font-family: var(--font-mono); font-size: 11px; color: rgba(107,142,144,0.6); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom a { color: inherit; text-decoration: underline; }
+
+    @media (max-width: 767px) {
+      .site-nav { padding: 0 22px; }
+      .nav-links, .nav-donate { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .rentals-hero { padding: 44px 22px 36px; }
+      .rentals-hero-headline { font-size: 1.75rem; }
+      .rentals-hero-tagline { font-size: 0.9375rem; }
+
+      .rentals-info { padding: 44px 22px; }
+      .rentals-cta { font-size: 1.1875rem; }
+
+      .gallery { padding: 52px 0; }
+      .gallery-header { flex-direction: column; align-items: flex-start; padding: 0 22px; }
+      .gallery-headline { font-size: 1.5rem; }
+      .gallery-carousel {
+        display: flex; gap: 12px; overflow-x: auto;
+        scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; padding: 0 24px; max-width: none; margin: 0;
+      }
+      .gallery-carousel::-webkit-scrollbar { display: none; }
+      .gallery-carousel .gallery-card { flex: 0 0 85vw; scroll-snap-align: center; }
+
+      .site-footer { padding: 40px 22px 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-leaf"></div>
+    <span class="nav-wordmark">Warner Park &amp; Gardens</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#story" class="nav-link">About Us</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="rentals.html" class="nav-link" aria-current="page">Rentals</a>
+    <a href="index.html#location" class="nav-link">Location</a>
+    <a href="index.html#donate" class="nav-donate">Donate</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="index.html#story">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="rentals.html" aria-current="page">Rentals</a>
+    <a href="index.html#location">Location</a>
+    <a href="index.html#donate" class="nav-donate-btn">Donate</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="rentals-hero">
+  <div class="rentals-hero-inner">
+    <h1 class="rentals-hero-headline">Rent the Park</h1>
+    <p class="rentals-hero-tagline">Warner Park and Gardens is available to rent for private gatherings. We have hosted birthdays, reunions, field trips, workshops, and more.</p>
+    <a href="index.html" class="back-link">&larr; Back to homepage</a>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="rentals-info">
+  <ul class="rentals-facts">
+    <li>$350.00 flat rate</li>
+    <li>Open from dawn to dusk.</li>
+    <li>Rental fees help us care for the park.</li>
+  </ul>
+  <p class="rentals-cta">Contact us today to plan your next event!</p>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <h2 class="gallery-headline">See the Space</h2>
+    <a href="gallery.html" class="gallery-see-all">See all &rarr;</a>
+  </div>
+  <div class="gallery-carousel" id="rentalsGallery"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-leaf"></div>
+        <span class="footer-wordmark">Warner Park &amp; Gardens</span>
+      </div>
+      <p class="footer-desc">Still Here. Still Growing.</p>
+    </div>
+    <div>
+      <p class="footer-col-label">Navigate</p>
+      <a href="index.html#story" class="footer-link">About Us</a>
+      <a href="gallery.html" class="footer-link">Gallery</a>
+      <a href="rentals.html" class="footer-link">Rentals</a>
+      <a href="index.html#location" class="footer-link">Location</a>
+      <a href="index.html#donate" class="footer-link footer-donate">Donate</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Warner Park &amp; Gardens &middot; 501(c)(3) &middot; Chicago, IL</span>
+    <span><a href="privacy.html">Privacy</a> &middot; Contact</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(btn) {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+  }
+  document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  });
+</script>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&#8592;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">&#8594;</button>
+</div>
+
+<script>
+  // Rentals gallery — reuses images 13-18 from the main gallery set.
+  const rentalPhotos = [
+    { src: '13-green-plants.jpg',            alt: 'Lush green plants in Warner Park and Gardens' },
+    { src: '14-wall-ivy.jpg',                alt: 'Ivy on garden wall in Warner Park and Gardens' },
+    { src: '15-pink-and-white.jpg',          alt: 'Pink and white blooms in Warner Park and Gardens' },
+    { src: '16-flower-pedestal-closeup.jpg', alt: 'Flower pedestal closeup in Warner Park and Gardens' },
+    { src: '17-green-sign.jpg',              alt: 'Garden sign in Warner Park and Gardens' },
+    { src: '18-dedication-sign.jpg',         alt: 'Dedication sign in Warner Park and Gardens' },
+  ];
+
+  const expandIconSVG = `<span class="expand-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span>`;
+
+  let currentLightboxIndex = 0;
+  let lightboxImages = [];
+
+  const rentalsContainer = document.getElementById('rentalsGallery');
+  if (rentalsContainer) {
+    rentalPhotos.forEach((photo) => {
+      const figure = document.createElement('figure');
+      figure.className = 'gallery-card';
+      const img = document.createElement('img');
+      img.src = `/images/gallery/${photo.src}`;
+      img.alt = photo.alt;
+      img.loading = 'eager';
+      img.decoding = 'async';
+      img.addEventListener('error', () => { figure.style.display = 'none'; });
+      lightboxImages.push(img);
+      img.addEventListener('click', () => {
+        currentLightboxIndex = lightboxImages.indexOf(img);
+        openLightbox(currentLightboxIndex);
+      });
+      figure.appendChild(img);
+      const tmpl = document.createElement('template');
+      tmpl.innerHTML = expandIconSVG;
+      figure.appendChild(tmpl.content.firstChild);
+      rentalsContainer.appendChild(figure);
+    });
+  }
+
+  function openLightbox(index) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    currentLightboxIndex = index;
+    lightboxImg.src = lightboxImages[index].src;
+    lightboxImg.alt = lightboxImages[index].alt;
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.getElementById('lightboxPrev').style.opacity = index === 0 ? '0.3' : '1';
+    document.getElementById('lightboxNext').style.opacity = index === lightboxImages.length - 1 ? '0.3' : '1';
+  }
+
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+    }
+  });
+  document.getElementById('lightboxPrev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentLightboxIndex > 0) openLightbox(currentLightboxIndex - 1);
+  });
+  document.getElementById('lightboxNext').addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentLightboxIndex < lightboxImages.length - 1) openLightbox(currentLightboxIndex + 1);
+  });
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') { lightbox.classList.remove('active'); lightbox.setAttribute('aria-hidden', 'true'); }
+    if (e.key === 'ArrowRight' && currentLightboxIndex < lightboxImages.length - 1) openLightbox(currentLightboxIndex + 1);
+    if (e.key === 'ArrowLeft' && currentLightboxIndex > 0) openLightbox(currentLightboxIndex - 1);
+  });
+</script>
+</body>
+</html>

@@ -314,12 +314,14 @@
     .story-body p + p { margin-top: 1em; }
 
     .story-photo {
+      position: relative;
       border-radius: 12px;
-      aspect-ratio: 4/3;
+      aspect-ratio: 1/1;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      touch-action: pan-y;
     }
 
     .ph-tag {
@@ -329,6 +331,76 @@
       letter-spacing: 0.1em;
       color: var(--color-primary);
       opacity: 0.5;
+    }
+
+    /* ── Story photo swipe card ── */
+    .swipe-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .swipe-img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    #storySwipeTrack img:first-child {
+      object-position: center top;
+    }
+
+    .swipe-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(42, 69, 71, 0.55);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.85;
+      transition: background 0.15s ease, opacity 0.15s ease;
+      z-index: 2;
+    }
+
+    .swipe-nav:hover { background: rgba(42, 69, 71, 0.85); opacity: 1; }
+    .swipe-prev { left: 10px; }
+    .swipe-next { right: 10px; }
+
+    .swipe-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .swipe-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .swipe-dot.active {
+      background: #fff;
+      transform: scale(1.3);
     }
 
     /* ── 04 DONATE ── */
@@ -801,7 +873,6 @@
       /* Story */
       .story { padding: 52px 22px; }
       .story-grid { grid-template-columns: 1fr; gap: 28px; }
-      .story-photo { order: -1; }
       .story-headline { font-size: 1.5rem; }
 
       /* Donate */
@@ -863,7 +934,7 @@
   <div class="nav-links">
     <a href="#story" class="nav-link">About Us</a>
     <a href="gallery.html" class="nav-link">Gallery</a>
-    <a href="#rent-preview" class="nav-link">Rentals</a>
+    <a href="rentals.html" class="nav-link">Rentals</a>
     <a href="#location" class="nav-link">Location</a>
     <a href="#donate" class="nav-donate">Donate</a>
   </div>
@@ -874,7 +945,7 @@
   <div class="nav-mobile-menu" id="mobile-menu">
     <a href="#story">About Us</a>
     <a href="gallery.html">Gallery</a>
-    <a href="#rent-preview">Rentals</a>
+    <a href="rentals.html">Rentals</a>
     <a href="#location">Location</a>
     <a href="#donate" class="nav-donate-btn">Donate</a>
   </div>
@@ -909,8 +980,17 @@
         <p>Today, it's tended by friends and neighbors for all to enjoy. And the gingko tree is still there.</p>
       </div>
     </div>
-    <div class="story-photo hatch">
-      <span class="ph-tag">[Photo placeholder — 4:3]</span>
+    <div class="story-photo hatch" id="storySwipe">
+      <div class="swipe-track" id="storySwipeTrack">
+        <img class="swipe-img" src="/images/story/01-lois.jpg" alt="Lois Buenger, founder of Warner Park and Gardens" loading="lazy" decoding="async">
+        <img class="swipe-img" src="/images/story/02-lois.jpg" alt="Lois Buenger laughing with friends at home" loading="lazy" decoding="async">
+      </div>
+      <button class="swipe-nav swipe-prev" aria-label="Previous photo">&#8592;</button>
+      <button class="swipe-nav swipe-next" aria-label="Next photo">&#8594;</button>
+      <div class="swipe-dots">
+        <span class="swipe-dot active"></span>
+        <span class="swipe-dot"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -948,7 +1028,7 @@
   <div class="rent-preview-inner">
     <h2 class="rent-preview-headline">Rent the Park</h2>
     <p class="rent-preview-body">Friends &amp; neighbors have celebrated birthdays, reunions, and weddings here. Come enjoy the perennial gardens and shaded paths for your next event!</p>
-    <a href="#rent-preview" class="btn-accent">See Rental Details &rarr;</a>
+    <a href="rentals.html" class="btn-accent">See Rental Details &rarr;</a>
   </div>
 </section>
 
@@ -981,7 +1061,7 @@
       <p class="footer-col-label">Navigate</p>
       <a href="#story" class="footer-link">About Us</a>
       <a href="#gallery" class="footer-link">Gallery</a>
-      <a href="#rent-preview" class="footer-link">Rentals</a>
+      <a href="rentals.html" class="footer-link">Rentals</a>
       <a href="#location" class="footer-link">Location</a>
       <a href="#donate" class="footer-link footer-donate">Donate</a>
     </div>
@@ -1157,6 +1237,48 @@
       openLightbox(currentLightboxIndex - 1);
     }
   });
+</script>
+
+<script>
+  // Our Story photo card — swipe or use the arrows to switch photos of Lois.
+  (function() {
+    const swipeEl = document.getElementById('storySwipe');
+    const track = document.getElementById('storySwipeTrack');
+    if (!swipeEl || !track) return;
+
+    const slides = track.querySelectorAll('.swipe-img');
+    const dots = swipeEl.querySelectorAll('.swipe-dot');
+    const prevBtn = swipeEl.querySelector('.swipe-prev');
+    const nextBtn = swipeEl.querySelector('.swipe-next');
+    let index = 0;
+
+    function render() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    function goTo(newIndex) {
+      index = (newIndex + slides.length) % slides.length;
+      render();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    let touchStartX = null;
+    swipeEl.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    swipeEl.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(deltaX) > 40) {
+        goTo(index + (deltaX < 0 ? 1 : -1));
+      }
+      touchStartX = null;
+    });
+  })();
 </script>
 </body>
 </html>
